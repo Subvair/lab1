@@ -12,21 +12,11 @@ class Program {
             string choice = Console.ReadLine();
             
             if (choice == "1") {
-                Console.Write("Введите a: ");
-                int a = int.Parse(Console.ReadLine());
-                
-                Console.Write("Введите n: ");
-                int n = int.Parse(Console.ReadLine());
-                
-                int powerResult = Power(a, n);
-                Console.WriteLine($"{a}^{n} = {powerResult}\n");
+                Power();
             } 
             else if (choice == "2") {
-                Console.Write("Введите x (x >= 100): ");
-                int x = int.Parse(Console.ReadLine());
-                
-                int transformedNumber = TransformNumber(x);
-                Console.WriteLine($"Преобразованное число: {transformedNumber}\n");
+                TransformNumber();
+
             } 
             else if (choice == "3") {
                 Console.WriteLine("Выход из программы.");
@@ -38,23 +28,35 @@ class Program {
         }
     }
 
-    // Функция для вычисления a^n без использования других операций, кроме умножения
-    static int Power(int a, int n) {
+    // Функция для вычисления a^n 
+    static void Power() {
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+        
+        
         int result = 1;
         for (int i = 0; i < n; i++) {
-            result *= a; // Единственная разрешённая операция — умножение
+            result *= a; 
         }
-        return result;
+
+        Console.WriteLine($"{a}^{n} = {result}\n");
     }
 
-    // Функция для обработки числа x: удаление второй цифры и её перенос в конец
-    static int TransformNumber(int x) {
+    // Функция для переноса второй цифры в конец
+    static void TransformNumber() {
+        Console.Write("Введите x (x >= 100): ");
+        int x = int.Parse(Console.ReadLine());
+        
+        
         string numStr = x.ToString();
         if (numStr.Length < 3) throw new ArgumentException("Число должно быть >= 100");
 
-        char secondDigit = numStr[1]; // Вторая цифра
-        string newStr = numStr.Remove(1, 1) + secondDigit; // Удалить вторую цифру и добавить её в конец
+        char secondDigit = numStr[1]; 
+        string newStr = numStr.Remove(1, 1) + secondDigit; 
 
-        return int.Parse(newStr);
+        Console.WriteLine($"Преобразованное число: {newStr}\n");
     }
 }
