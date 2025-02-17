@@ -11,19 +11,20 @@ class Program {
             
             string choice = Console.ReadLine();
             
-            if (choice == "1") {
-                Power();
-            } 
-            else if (choice == "2") {
-                TransformNumber();
+            switch (choice) {
+                case "1": 
+                    Power(); 
+                    break;
+                case "2": 
+                    TransformNumber(); 
+                    break;
+                case "3": 
+                    Console.WriteLine("Выход из программы.");; 
+                    return;
+                default: 
+                    Console.WriteLine("Некорректный ввод. Попробуйте снова.\n"); 
+                    break;
 
-            } 
-            else if (choice == "3") {
-                Console.WriteLine("Выход из программы.");
-                break;
-            } 
-            else {
-                Console.WriteLine("Некорректный ввод. Попробуйте снова.\n");
             }
         }
     }
